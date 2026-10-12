@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useLanguage } from "@/lib/i18n";
 
 export default function FareEstimator() {
+  const { t } = useLanguage();
   const [pickup, setPickup] = useState("Webb Chapel & NW Hwy, Dallas");
   const [destination, setDestination] = useState("DFW Aeropuerto Terminal A-E");
   const [vehicle, setVehicle] = useState("sedan");
@@ -67,13 +69,13 @@ export default function FareEstimator() {
         {/* Encabezado */}
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="text-xs font-bold uppercase tracking-widest text-brand-yellow bg-brand-yellow/10 px-3 py-1 rounded-full border border-brand-yellow/20">
-            Tarifas Oficiales HI TAXI
+            {t("Tarifas Oficiales HI TAXI")}
           </span>
           <h2 className="font-display text-3xl font-extrabold text-white tracking-tight mt-3">
-            Calculadora de Tarifas y Estimador
+            {t("Calculadora de Tarifas y Estimador")}
           </h2>
           <p className="text-gray-400 mt-2 text-sm sm:text-base">
-            Precios claros y servicio confiable las 24 horas en todo el área de Dallas y DFW.
+            {t("Precios claros y servicio confiable las 24 horas en todo el área de Dallas y DFW.")}
           </p>
         </div>
 
@@ -85,7 +87,7 @@ export default function FareEstimator() {
               {/* Campo 1: Origen */}
               <div>
                 <label htmlFor="pickup" className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">
-                  Punto de Recogida
+                  {t("Punto de Recogida")}
                 </label>
                 <div className="relative">
                   <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-sm">📍</span>
@@ -95,7 +97,7 @@ export default function FareEstimator() {
                     value={pickup}
                     disabled={loading}
                     onChange={(e) => setPickup(e.target.value)}
-                    placeholder="Dirección, trabajo u hotel"
+                    placeholder={t("Dirección, trabajo u hotel")}
                     className="w-full pl-10 pr-4 py-3.5 bg-[#22272e] border border-white/10 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-yellow transition"
                     required
                   />
@@ -105,17 +107,21 @@ export default function FareEstimator() {
               {/* Campo 2: Destino */}
               <div>
                 <label htmlFor="destination" className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">
-                  Destino
+                  {t("Destino")}
                 </label>
                 <div className="relative">
                   <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-sm">🏁</span>
                   <input
                     type="text"
                     id="destination"
-                    value={destination}
+                    value={
+                      destination === "DFW Aeropuerto Terminal A-E"
+                        ? t(destination)
+                        : destination
+                    }
                     disabled={loading}
                     onChange={(e) => setDestination(e.target.value)}
-                    placeholder="Aeropuerto o destino en Dallas"
+                    placeholder={t("Aeropuerto o destino en Dallas")}
                     className="w-full pl-10 pr-4 py-3.5 bg-[#22272e] border border-white/10 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-yellow transition"
                     required
                   />
@@ -125,7 +131,7 @@ export default function FareEstimator() {
               {/* Campo 3: Tipo de Vehículo */}
               <div>
                 <label htmlFor="vehicle" className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">
-                  Tipo de Vehículo
+                  {t("Tipo de Vehículo")}
                 </label>
                 <div className="relative">
                   <select
@@ -135,9 +141,9 @@ export default function FareEstimator() {
                     onChange={(e) => setVehicle(e.target.value)}
                     className="w-full px-4 py-3.5 bg-[#22272e] border border-white/10 rounded-xl text-sm text-white focus:outline-none focus:ring-2 focus:ring-brand-yellow transition appearance-none cursor-pointer"
                   >
-                    <option value="sedan">Sedán (1-4 Pasajeros)</option>
-                    <option value="suv">SUV (1-4 Pasajeros)</option>
-                    <option value="van">Van Aeropuerto (1-7 Pasajeros)</option>
+                    <option value="sedan">{t("Sedán (1-4 Pasajeros)")}</option>
+                    <option value="suv">{t("SUV (1-4 Pasajeros)")}</option>
+                    <option value="van">{t("Van Aeropuerto (1-7 Pasajeros)")}</option>
                   </select>
                   <span className="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-xs text-gray-400">▼</span>
                 </div>
@@ -150,7 +156,7 @@ export default function FareEstimator() {
               <div className="flex w-full flex-col items-center gap-3 text-center sm:flex-row sm:items-baseline sm:text-left">
                 <span className="flex items-center justify-center gap-2 font-display text-4xl font-extrabold text-brand-yellow">
                   {loading ? (
-                    <span className="text-2xl text-gray-400 animate-pulse">Calculando...</span>
+                    <span className="text-2xl text-gray-400 animate-pulse">{t("Calculando...")}</span>
                   ) : (
                     estimatedPrice ? `$${estimatedPrice}` : "—"
                   )}
@@ -158,21 +164,21 @@ export default function FareEstimator() {
                 
                 <div className="flex flex-col items-center gap-1 text-center sm:items-start sm:text-left">
                   <span className="text-xs font-semibold text-[#41e575] bg-[#41e575]/10 px-3 py-1.5 rounded-full border border-[#41e575]/20">
-                    $2.50 Base + $2.50/Milla (DFW Mínimo $32.00)
+                    {t("$2.50 Base + $2.50/Milla (DFW Mínimo $32.00)")}
                   </span>
                   {breakdown?.isRealRoute && !loading && (
                     <span className="text-[11px] text-gray-400">
-                      📏 Distancia: <strong>{breakdown.miles} mi</strong> | ⏱️ Tiempo apróx: <strong>{breakdown.minutes} min</strong>
+                      {t("📏 Distancia:")} <strong>{breakdown.miles} mi</strong>{t(" | ⏱️ Tiempo apróx: ")}<strong>{breakdown.minutes}{t(" min")}</strong>
                     </span>
                   )}
                   {breakdown && !breakdown.isRealRoute && !loading && (
                     <span className="max-w-sm text-[11px] text-amber-300" role="status">
-                      No se pudo verificar la ruta; el precio mostrado es una referencia.
+                      {t("No se pudo verificar la ruta; el precio mostrado es una referencia.")}
                     </span>
                   )}
                   {errorMessage && !loading && (
                     <span className="max-w-sm text-[11px] text-red-400" role="alert">
-                      {errorMessage}
+                      {t(errorMessage)}
                     </span>
                   )}
                 </div>
@@ -184,14 +190,14 @@ export default function FareEstimator() {
                   disabled={loading || !pickup.trim() || !destination.trim()}
                   className="w-full sm:flex-1 md:w-auto md:min-w-44 inline-flex items-center justify-center gap-2 bg-brand-yellow hover:bg-brand-yellowHover text-black font-extrabold px-6 py-3.5 rounded-full text-sm shadow-[0_0_20px_rgba(250,189,13,0.3)] transition disabled:cursor-wait disabled:opacity-60"
                 >
-                  <span>{loading ? "Calculando..." : "Calcular tarifa"}</span>
+                  <span>{loading ? t("Calculando...") : t("Calcular tarifa")}</span>
                   {!loading && <span className="font-black">&gt;</span>}
                 </button>
                 <a
                   href="tel:2148936969"
                   className="w-full sm:flex-1 md:w-auto md:min-w-44 inline-flex items-center justify-center gap-2 border border-white/15 text-gray-200 hover:text-white hover:border-white/30 font-bold px-6 py-3 rounded-full text-sm transition"
                 >
-                  <span>Llama y reserva</span>
+                  <span>{t("Llama y reserva")}</span>
                 </a>
               </div>
             </div>

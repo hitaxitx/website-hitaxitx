@@ -1,6 +1,10 @@
+"use client";
+
 import Image from "next/image";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Features() {
+  const { t } = useLanguage();
   const featuresList = [
     {
       icon: "/icons/clock.svg",
@@ -35,13 +39,13 @@ export default function Features() {
         {/* Encabezado */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-xs font-bold uppercase tracking-widest text-brand-yellow bg-brand-yellow/10 px-3 py-1 rounded-full border border-brand-yellow/20">
-            VIAJA CON HI TAXI
+            {t("VIAJA CON HI TAXI")}
           </span>
           <h2 className="font-display text-3xl font-extrabold text-white tracking-tight mt-3">
-            Tu taxi en Dallas, cuando lo necesitas
+            {t("Tu taxi en Dallas, cuando lo necesitas")}
           </h2>
           <p className="text-gray-400 mt-3 text-sm sm:text-base">
-            Servicio las 24 horas para tus viajes diarios, salidas y traslados al aeropuerto.
+            {t("Servicio las 24 horas para tus viajes diarios, salidas y traslados al aeropuerto.")}
           </p>
         </div>
 
@@ -62,10 +66,10 @@ export default function Features() {
                 />
               </div>
               <h3 className="font-display text-lg font-bold text-white mb-2 group-hover:text-brand-yellow transition">
-                {item.title}
+                {t(item.title)}
               </h3>
               <p className="text-sm text-gray-400 leading-relaxed">
-                {item.description}
+                {t(item.description)}
               </p>
             </div>
           ))}

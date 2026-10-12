@@ -1,6 +1,11 @@
+"use client";
+
 import Image from "next/image";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-brand-darkBg border-t border-white/10 py-12">
       <div className="max-w-7xl mx-auto px-6">
@@ -31,11 +36,11 @@ export default function Footer() {
             href="tel:2148936969"
             className="justify-self-center whitespace-nowrap py-2 text-center text-xs font-bold text-brand-yellow transition hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-yellow sm:justify-self-start"
           >
-            Línea Directa: (214) 893-6969
+            {t("Línea Directa: (214) 893-6969")}
           </a>
 
           <nav
-            aria-label="Redes sociales"
+            aria-label={t("Redes sociales")}
             className="flex items-center justify-center gap-2 sm:justify-self-end"
           >
             <a
@@ -96,10 +101,10 @@ export default function Footer() {
         {/* Derechos de Autor y Licencia */}
         <div className="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-3">
           <p>
-            © 2026 Hi Taxi, Dallas. Todos los derechos reservados. Operador de Taxi Autorizado en Dallas. 
+            {t("© 2026 Hi Taxi, Dallas. Todos los derechos reservados. Operador de Taxi Autorizado en Dallas.")}
           </p>
           <p>
-            Brindando servicio en Dallas, Irving, Webb Chapel y Aeropuerto DFW.
+            {t("Brindando servicio en Dallas, Irving, Webb Chapel y Aeropuerto DFW.")}
           </p>
         </div>
 

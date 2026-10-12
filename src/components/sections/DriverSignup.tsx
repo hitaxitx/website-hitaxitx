@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/lib/i18n";
 
 export default function DriverSignup() {
+  const { t } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -72,27 +74,27 @@ export default function DriverSignup() {
             {/* Columna Izquierda: Beneficios */}
             <div className="lg:col-span-6">
               <span className="inline-block px-3.5 py-1.5 rounded-full bg-brand-yellow/10 text-brand-yellow text-xs font-extrabold uppercase tracking-wider mb-4 border border-brand-yellow/30">
-                ÚNETE A NUESTRA RED DE CONDUCTORES
+                {t("ÚNETE A NUESTRA RED DE CONDUCTORES")}
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-4">
-                Conduce con HI TAXI
+                {t("Conduce con HI TAXI")}
               </h2>
               <p className="text-base text-gray-300 leading-relaxed mb-6">
-                Forma parte de nuestra red de conductores independientes en Dallas y trabaja con tu propio vehículo.
+                {t("Forma parte de nuestra red de conductores independientes en Dallas y trabaja con tu propio vehículo.")}
               </p>
               
               <div className="space-y-3.5 text-sm text-gray-300">
                 <div className="flex items-center gap-3">
                   <span className="text-brand-yellow font-bold text-lg">✓</span>
-                  <span>Recibe servicios asignados por nuestro equipo de despacho</span>
+                  <span>{t("Recibe servicios asignados por nuestro equipo de despacho")}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="text-brand-yellow font-bold text-lg">✓</span>
-                  <span>Recibe el pago directamente por cada servicio</span>
+                  <span>{t("Recibe el pago directamente por cada servicio")}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="text-brand-yellow font-bold text-lg">✓</span>
-                  <span>Soporte de despacho disponible 24/7</span>
+                  <span>{t("Soporte de despacho disponible 24/7")}</span>
                 </div>
               </div>
             </div>
@@ -105,7 +107,7 @@ export default function DriverSignup() {
                     htmlFor="driver-name"
                     className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1.5"
                   >
-                    Nombre Completo
+                    {t("Nombre Completo")}
                   </label>
                   <input
                     type="text"
@@ -113,7 +115,7 @@ export default function DriverSignup() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="ej. Samuel Rodríguez"
+                    placeholder={t("ej. Samuel Rodríguez")}
                     className="w-full px-4 py-3.5 bg-[#1d2127] border border-white/10 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-transparent transition"
                   />
                 </div>
@@ -123,7 +125,7 @@ export default function DriverSignup() {
                     htmlFor="driver-phone"
                     className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1.5"
                   >
-                    Teléfono Móvil
+                    {t("Teléfono Móvil")}
                   </label>
                   <input
                     type="tel"
@@ -131,7 +133,7 @@ export default function DriverSignup() {
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="(214) 555-0192"
+                    placeholder={t("(214) 555-0192")}
                     className="w-full px-4 py-3.5 bg-[#1d2127] border border-white/10 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-transparent transition"
                   />
                 </div>
@@ -142,14 +144,14 @@ export default function DriverSignup() {
                       htmlFor="driver-city"
                       className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1.5"
                     >
-                      Ciudad / Zona
+                      {t("Ciudad / Zona")}
                     </label>
                     <input
                       type="text"
                       id="driver-city"
                       value={formData.city}
                       onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                      placeholder="ej. Dallas"
+                      placeholder={t("ej. Dallas")}
                       autoComplete="address-level2"
                       className="w-full px-4 py-3.5 bg-[#1d2127] border border-white/10 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-transparent transition"
                     />
@@ -160,14 +162,14 @@ export default function DriverSignup() {
                       htmlFor="driver-vehicle-type"
                       className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1.5"
                     >
-                      Tipo de Vehículo
+                      {t("Tipo de Vehículo")}
                     </label>
                     <input
                       type="text"
                       id="driver-vehicle-type"
                       value={formData.vehicleType}
                       onChange={(e) => setFormData({ ...formData, vehicleType: e.target.value })}
-                      placeholder="ej. Sedán, SUV"
+                      placeholder={t("ej. Sedán, SUV")}
                       className="w-full px-4 py-3.5 bg-[#1d2127] border border-white/10 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-transparent transition"
                     />
                   </div>
@@ -177,7 +179,7 @@ export default function DriverSignup() {
                       htmlFor="driver-vehicle-year"
                       className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1.5"
                     >
-                      Año del Vehículo
+                      {t("Año del Vehículo")}
                     </label>
                     <input
                       type="number"
@@ -187,7 +189,7 @@ export default function DriverSignup() {
                       step="1"
                       value={formData.vehicleYear}
                       onChange={(e) => setFormData({ ...formData, vehicleYear: e.target.value })}
-                      placeholder="ej. 2020"
+                      placeholder={t("ej. 2020")}
                       className="w-full px-4 py-3.5 bg-[#1d2127] border border-white/10 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-transparent transition"
                     />
                   </div>
@@ -198,7 +200,7 @@ export default function DriverSignup() {
                     htmlFor="driver-vehicle"
                     className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1.5"
                   >
-                    VEHÍCULO / LICENCIA DE CONDUCIR
+                    {t("VEHÍCULO / LICENCIA DE CONDUCIR")}
                   </label>
                   <select
                     id="driver-vehicle"
@@ -207,16 +209,16 @@ export default function DriverSignup() {
                     className="w-full px-4 py-3.5 bg-[#1d2127] border border-white/10 rounded-xl text-sm text-white focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-transparent transition cursor-pointer"
                   >
                     <option value="Tengo vehículo propio (2013 en adelante) y ya cuento con licencia de conducir." className="bg-brand-card">
-                      Tengo vehículo propio (2013 en adelante) y ya cuento con licencia de conducir.
+                      {t("Tengo vehículo propio (2013 en adelante) y ya cuento con licencia de conducir.")}
                     </option>
                     <option value="Necesito un vehículo de la flota de Hi Taxi (Alquiler) y ya cuento con licencia de conducir." className="bg-brand-card">
-                      Necesito un vehículo de la flota de Hi Taxi (Alquiler) y ya cuento con licencia de conducir.
+                      {t("Necesito un vehículo de la flota de Hi Taxi (Alquiler) y ya cuento con licencia de conducir.")}
                     </option>
                     <option value="Tengo vehículo propio (2013 en adelante) y necesito obtener mi licencia de conducir." className="bg-brand-card">
-                      Tengo vehículo propio (2013 en adelante) y necesito obtener mi licencia de conducir.
+                      {t("Tengo vehículo propio (2013 en adelante) y necesito obtener mi licencia de conducir.")}
                     </option>
                     <option value="Necesito un vehículo de la flota de Hi Taxi (Alquiler) y necesito obtener mi licencia de conducir." className="bg-brand-card">
-                      Necesito un vehículo de la flota de Hi Taxi (Alquiler) y necesito obtener mi licencia de conducir.
+                      {t("Necesito un vehículo de la flota de Hi Taxi (Alquiler) y necesito obtener mi licencia de conducir.")}
                     </option>
                   </select>
                 </div>
@@ -226,19 +228,19 @@ export default function DriverSignup() {
                   disabled={loading}
                   className="w-full mt-2 inline-flex items-center justify-center gap-2 bg-brand-yellow hover:bg-brand-yellowHover text-black font-extrabold py-4 px-6 rounded-xl text-sm shadow-[0_4px_20px_rgba(250,189,13,0.3)] transition cursor-pointer disabled:opacity-50"
                 >
-                  <span>{loading ? "Enviando solicitud..." : "Postularse para Conducir"}</span>
+                  <span>{loading ? t("Enviando solicitud...") : t("Postularse para Conducir")}</span>
                   {!loading && <span className="font-black">&gt;</span>}
                 </button>
 
                 {errorMsg && (
                   <div className="text-xs text-red-400 font-bold text-center pt-2">
-                    {errorMsg}
+                    {t(errorMsg)}
                   </div>
                 )}
 
                 {submitted && (
                   <div className="text-xs text-[#41e575] font-bold text-center pt-2 animate-fade-in">
-                    ¡Solicitud recibida! Un gerente de flota se comunicará contigo hoy.
+                    {t("¡Solicitud recibida! Un gerente de flota se comunicará contigo hoy.")}
                   </div>
                 )}
               </form>

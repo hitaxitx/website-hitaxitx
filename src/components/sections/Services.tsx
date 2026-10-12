@@ -1,8 +1,14 @@
 "use client";
 
 import { useRef } from "react";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Services() {
+  const { language, t } = useLanguage();
+  const whatsappHref =
+    language === "en"
+      ? "https://wa.me/12148936969?text=Hello%2C%20I%27d%20like%20to%20request%20a%20taxi%20%F0%9F%9A%95."
+      : "https://wa.me/12148936969?text=Hola%2C%20quiero%20solicitar%20un%20taxi%20%F0%9F%9A%95.";
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
@@ -42,7 +48,7 @@ export default function Services() {
         "Sedanes, minivans y SUVs ejecutivas disponibles",
       ],
       ctaText: "Reservar Taxi al Aeropuerto",
-      ctaHref: "https://wa.me/12148936969?text=Hola%2C%20quiero%20solicitar%20un%20taxi%20%F0%9F%9A%95.",
+      ctaHref: whatsappHref,
       isFeatured: true,
     },
     {
@@ -112,7 +118,7 @@ export default function Services() {
         "Soporte directo las 24 horas del día",
       ],
       ctaText: "Consultar Servicio Especial",
-      ctaHref: "https://wa.me/12148936969?text=Hola%2C%20quiero%20solicitar%20un%20taxi%20%F0%9F%9A%95.",
+      ctaHref: whatsappHref,
       isFeatured: false,
     },
   ];
@@ -125,13 +131,13 @@ export default function Services() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="max-w-2xl">
             <span className="text-xs font-bold uppercase tracking-widest text-brand-yellow bg-brand-yellow/10 px-3 py-1 rounded-full border border-brand-yellow/20">
-              Gama Integral
+              {t("Gama Integral")}
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-3">
-              Soluciones de Transporte a Tu Medida
+              {t("Soluciones de Transporte a Tu Medida")}
             </h2>
             <p className="text-gray-400 mt-3 text-sm sm:text-base">
-              Desliza para explorar nuestros servicios, desde viajes locales hasta reservas especiales.
+              {t("Desliza para explorar nuestros servicios, desde viajes locales hasta reservas especiales.")}
             </p>
           </div>
 
@@ -139,14 +145,14 @@ export default function Services() {
           <div className="flex items-center gap-3 shrink-0">
             <button
               onClick={() => scroll("left")}
-              aria-label="Anterior servicio"
+              aria-label={t("Anterior servicio")}
               className="w-12 h-12 rounded-full border border-white/20 bg-brand-surface hover:bg-brand-card hover:border-brand-yellow text-white transition flex items-center justify-center cursor-pointer shadow-md active:scale-95"
             >
               ←
             </button>
             <button
               onClick={() => scroll("right")}
-              aria-label="Siguiente servicio"
+              aria-label={t("Siguiente servicio")}
               className="w-12 h-12 rounded-full border border-white/20 bg-brand-surface hover:bg-brand-card hover:border-brand-yellow text-white transition flex items-center justify-center cursor-pointer shadow-md active:scale-95"
             >
               →
@@ -175,15 +181,15 @@ export default function Services() {
                     service.isFeatured ? "text-brand-yellow" : "text-gray-400"
                   }`}
                 >
-                  {service.badge}
+                  {t(service.badge)}
                 </div>
                 
                 <h3 className="font-display text-2xl font-bold text-white mb-3 group-hover:text-brand-yellow transition">
-                  {service.title}
+                  {t(service.title)}
                 </h3>
                 
                 <p className="text-sm text-gray-400 leading-relaxed mb-6">
-                  {service.description}
+                  {t(service.description)}
                 </p>
 
                 {/* Lista de viñetas */}
@@ -191,7 +197,7 @@ export default function Services() {
                   {service.features.map((feat, featIdx) => (
                     <li key={featIdx} className="flex items-start gap-2.5">
                       <span className="w-2 h-2 rounded-full bg-brand-yellow mt-1.5 shrink-0" />
-                      <span>{feat}</span>
+                      <span>{t(feat)}</span>
                     </li>
                   ))}
                 </ul>
@@ -208,7 +214,7 @@ export default function Services() {
                     : "border border-white/20 text-white hover:bg-white/10"
                 }`}
               >
-                <span>{service.ctaText}</span>
+                <span>{t(service.ctaText)}</span>
                 <span className="font-black">&gt;</span>
               </a>
             </div>

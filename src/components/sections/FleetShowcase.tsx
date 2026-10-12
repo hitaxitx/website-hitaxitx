@@ -1,4 +1,9 @@
+"use client";
+
+import { useLanguage } from "@/lib/i18n";
+
 export default function FleetShowcase() {
+  const { t } = useLanguage();
   const fleet = [
     {
       title: "Sedanes",
@@ -51,13 +56,13 @@ export default function FleetShowcase() {
         {/* Encabezado */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-yellow/10 text-brand-yellow text-xs font-bold uppercase tracking-wider mb-3 border border-brand-yellow/30">
-            Nuestra Flota
+            {t("Nuestra Flota")}
           </div>
           <h2 className="font-display text-3xl font-extrabold text-white tracking-tight">
-            Vehículos seguros, cómodos y listos para llevarte a tu destino.
+            {t("Vehículos seguros, cómodos y listos para llevarte a tu destino.")}
           </h2>
           <p className="text-gray-400 mt-3 text-sm sm:text-base">
-            HI TAXI ofrece diferentes opciones de vehículos para traslados locales, viajes programados y servicios a los aeropuertos de Dallas.
+            {t("HI TAXI ofrece diferentes opciones de vehículos para traslados locales, viajes programados y servicios a los aeropuertos de Dallas.")}
           </p>
         </div>
 
@@ -77,22 +82,22 @@ export default function FleetShowcase() {
                 <div className="relative rounded-xl overflow-hidden aspect-video bg-brand-darkBg border border-white/10">
                   <img
                     src={car.image}
-                    alt={car.title}
+                    alt={t(car.title)}
                     className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
                   />
                   <div
                     className={`absolute top-2.5 left-2.5 text-xs px-2.5 py-1 rounded-full shadow ${car.tagStyle}`}
                   >
-                    {car.tag}
+                    {t(car.tag)}
                   </div>
                 </div>
 
                 {/* Títulos */}
                 <div>
                   <h3 className="font-display text-lg font-bold text-white group-hover:text-brand-yellow transition">
-                    {car.title}
+                    {t(car.title)}
                   </h3>
-                  <p className="text-xs text-gray-400 mt-0.5">{car.subtitle}</p>
+                  <p className="text-xs text-gray-400 mt-0.5">{t(car.subtitle)}</p>
                 </div>
 
                 {/* Lista de Especificaciones */}
@@ -100,14 +105,14 @@ export default function FleetShowcase() {
                   {car.specs.map((spec, specIdx) => (
                     <li key={specIdx} className="flex items-center gap-2">
                       <span>{spec.icon}</span>
-                      <span>{spec.text}</span>
+                      <span>{t(spec.text)}</span>
                     </li>
                   ))}
                 </ul>
 
                 {/* Insignia de Nota de Precio */}
                 <div className="bg-[#22272e] p-2.5 rounded-xl border border-white/5 text-xs text-brand-yellow font-medium">
-                  {car.priceNote}
+                  {t(car.priceNote)}
                 </div>
               </div>
 
@@ -120,7 +125,7 @@ export default function FleetShowcase() {
                     : "border border-white/20 text-white hover:bg-white/10"
                 }`}
               >
-                <span>Solicitar un viaje</span>
+                <span>{t("Solicitar un viaje")}</span>
                 <span>&gt;</span>
               </a>
             </div>
@@ -130,29 +135,29 @@ export default function FleetShowcase() {
         {/* Bloque de Información Adicional (Seguridad y CTA) */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 bg-[#181c22] p-8 rounded-2xl border border-white/10 shadow-xl">
           <div>
-            <h3 className="font-display text-xl font-bold text-brand-yellow mb-4">Seguridad y comodidad</h3>
+            <h3 className="font-display text-xl font-bold text-brand-yellow mb-4">{t("Seguridad y comodidad")}</h3>
             <ul className="space-y-2 text-sm text-gray-300">
-              <li className="flex items-start gap-2"><span className="text-brand-yellow font-bold">✓</span> Vehículos autorizados y asegurados.</li>
-              <li className="flex items-start gap-2"><span className="text-brand-yellow font-bold">✓</span> Unidades limpias y en buenas condiciones.</li>
-              <li className="flex items-start gap-2"><span className="text-brand-yellow font-bold">✓</span> Aire acondicionado para mayor comodidad.</li>
-              <li className="flex items-start gap-2"><span className="text-brand-yellow font-bold">✓</span> Conductores autorizados para prestar servicio.</li>
-              <li className="flex items-start gap-2"><span className="text-brand-yellow font-bold">✓</span> Diferentes opciones de vehículos según disponibilidad.</li>
+              <li className="flex items-start gap-2"><span className="text-brand-yellow font-bold">✓</span> {t("Vehículos autorizados y asegurados.")}</li>
+              <li className="flex items-start gap-2"><span className="text-brand-yellow font-bold">✓</span> {t("Unidades limpias y en buenas condiciones.")}</li>
+              <li className="flex items-start gap-2"><span className="text-brand-yellow font-bold">✓</span> {t("Aire acondicionado para mayor comodidad.")}</li>
+              <li className="flex items-start gap-2"><span className="text-brand-yellow font-bold">✓</span> {t("Conductores autorizados para prestar servicio.")}</li>
+              <li className="flex items-start gap-2"><span className="text-brand-yellow font-bold">✓</span> {t("Diferentes opciones de vehículos según disponibilidad.")}</li>
             </ul>
             <p className="mt-4 text-xs text-gray-500 italic">
-              * El tipo y tamaño del vehículo asignado dependerá de la disponibilidad y las necesidades del servicio.
+              {t("* El tipo y tamaño del vehículo asignado dependerá de la disponibilidad y las necesidades del servicio.")}
             </p>
           </div>
 
           <div className="flex flex-col justify-center">
-            <h3 className="font-display text-xl font-bold text-white mb-2">¿Necesitas un vehículo con más espacio?</h3>
+            <h3 className="font-display text-xl font-bold text-white mb-2">{t("¿Necesitas un vehículo con más espacio?")}</h3>
             <p className="text-sm text-gray-400 mb-6">
-              Comunícate con nuestro equipo al solicitar tu taxi para verificar la disponibilidad.
+              {t("Comunícate con nuestro equipo al solicitar tu taxi para verificar la disponibilidad.")}
             </p>
             <a
               href="tel:2148936969"
               className="inline-flex items-center justify-center gap-2 bg-brand-yellow hover:bg-brand-yellowHover text-black font-extrabold px-6 py-3 rounded-xl text-sm transition self-start shadow-md"
             >
-              <span>Consultar Disponibilidad</span>
+              <span>{t("Consultar Disponibilidad")}</span>
               <span>&gt;</span>
             </a>
           </div>

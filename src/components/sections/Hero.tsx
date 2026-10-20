@@ -51,7 +51,7 @@ export default function Hero() {
             </div>
 
             {/* Botones de Acción Principal */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-10">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-3 md:mb-10">
               <a
                 href="tel:2148936969"
                 className="inline-flex items-center justify-center gap-2.5 bg-brand-yellow hover:bg-brand-yellowHover text-black font-extrabold px-8 py-4 rounded-full text-base shadow-[0_4px_25px_rgba(250,189,13,0.35)] hover:shadow-[0_6px_30px_rgba(250,189,13,0.5)] transition duration-200 group"
@@ -75,6 +75,28 @@ export default function Hero() {
                 <span>{t("Pedir Taxi")}</span>
               </a>
             </div>
+
+            <a
+              href="https://beacons.ai/hitaxi.tx"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t("Síguenos en Beacons")}
+              className="mb-10 inline-flex w-full items-center justify-center gap-2.5 rounded-full border border-brand-yellow bg-black px-7 py-3 text-sm font-bold text-white shadow-[0_0_15px_rgba(250,189,13,0.15)] transition duration-200 hover:bg-[#111] hover:shadow-[0_0_22px_rgba(250,189,13,0.25)] md:hidden"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 100 100"
+                className="h-5 w-5 fill-brand-yellow"
+              >
+                <circle cx="36" cy="24" r="24" />
+                <circle cx="75" cy="65" r="25" />
+                <circle cx="78" cy="21" r="11" />
+                <circle cx="10" cy="57" r="10" />
+                <circle cx="34" cy="85" r="15" />
+              </svg>
+              <span>{t("Síguenos")}</span>
+              <span className="text-sm font-black text-brand-yellow">&gt;</span>
+            </a>
           </div>
 
           {/* Columna Derecha: Logo y mensaje de marca (MODIFICADA) */}

@@ -66,7 +66,7 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={t("Síguenos en Beacons")}
-            className="inline-flex items-center gap-0 border border-brand-yellow bg-black/40 hover:bg-white/5 text-white font-bold px-2 md:px-5 py-2 md:py-2.5 rounded-full text-[11px] md:text-sm shadow-[0_0_15px_rgba(250,189,13,0.15)] hover:shadow-[0_0_22px_rgba(250,189,13,0.25)] transition duration-200 whitespace-nowrap md:gap-3"
+            className="hidden md:inline-flex items-center gap-0 border border-brand-yellow bg-black/40 hover:bg-white/5 text-white font-bold px-2 md:px-5 py-2 md:py-2.5 rounded-full text-[11px] md:text-sm shadow-[0_0_15px_rgba(250,189,13,0.15)] hover:shadow-[0_0_22px_rgba(250,189,13,0.25)] transition duration-200 whitespace-nowrap md:gap-3"
           >
             {/* SVG del Logo de Beacons en amarillo */}
             <svg
@@ -110,7 +110,7 @@ export default function Navbar() {
           {/* Botón de Llamada */}
           <a
             href="tel:2148936969"
-            className="inline-flex items-center gap-1 bg-brand-yellow hover:bg-brand-yellowHover text-black font-bold px-2 md:px-5 py-2 md:py-2.5 rounded-full text-[10px] md:text-sm shadow-[0_0_20px_rgba(250,189,13,0.3)] hover:shadow-[0_0_28px_rgba(250,189,13,0.5)] transition duration-200 whitespace-nowrap md:gap-2"
+            className="inline-flex items-center gap-1 bg-brand-yellow hover:bg-brand-yellowHover text-black font-bold px-3 md:px-5 py-2 md:py-2.5 rounded-full text-[10px] md:text-sm shadow-[0_0_20px_rgba(250,189,13,0.3)] hover:shadow-[0_0_28px_rgba(250,189,13,0.5)] transition duration-200 whitespace-nowrap md:gap-2"
           >
             <svg
               className="w-3 h-3 fill-current md:w-4 md:h-4"

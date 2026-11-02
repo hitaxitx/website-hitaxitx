@@ -65,9 +65,9 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: "/icons/logo-hi.svg",
-    shortcut: "/icons/logo-hi.svg",
-    apple: "/icons/logo-hi.svg",
+    icon: "/icons/favicon.png",
+    shortcut: "/icons/favicon.png",
+    apple: "/icons/favicon.png",
   },
 };
 
@@ -92,7 +92,7 @@ export default function RootLayout({
               url: "https://hitaxidallas.com/",
               telephone: "+1-214-893-6969",
               image: "https://hitaxidallas.com/images/hero-section.webp",
-              logo: "https://hitaxidallas.com/icons/logo-hi.svg",
+              logo: "https://hitaxidallas.com/icons/favicon.png",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "2351 W Northwest Hwy",

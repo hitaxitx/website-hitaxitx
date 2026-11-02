@@ -32,6 +32,8 @@ Thumbs.db
 .idea/
 *.swp
 *.pem
+*:Zone.Identifier
+*.Zone.Identifier
 
 # Debug logs
 npm-debug.log*
